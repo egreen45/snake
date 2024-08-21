@@ -30,6 +30,12 @@ int main(void){
     goto _return; 
   }
   
+  /*seed random number generator for different behavior each run*/
+  srand(time(NULL)); 
+ 
+  /*initialize snake*/
+  initSnake(); 
+
   bool quit = false; 
   while(!quit) {
     SDL_Event event; 
@@ -43,6 +49,8 @@ int main(void){
     }
     SDL_SetRenderDrawColor(renderer, 0x8, 0x8, 0x8, SDL_ALPHA_OPAQUE); 
     SDL_RenderClear(renderer); 
+    drawGrid(renderer); 
+    drawSnake(renderer);  
     SDL_RenderPresent(renderer);  
   }
   
